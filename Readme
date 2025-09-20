@@ -1,1 +1,39 @@
-Soon
+# Anti-DDoS Bash Script
+
+Script de protección de red basado en `iptables` / `ip6tables` para endurecer un servidor y mitigar ataques básicos (SYN flood, ICMP abuse, spoofing, etc.).  
+Pensado como **punto de partida**: revisa y adapta antes de usar en producción.
+
+---
+
+## Aviso crítico
+**Antes de ejecutar:** edita la variable `SSHPORT` dentro del script para que coincida con tu puerto SSH. El script establece políticas `DROP` por defecto y puede bloquear acceso remoto si no se configura correctamente.
+
+---
+
+## Contenido
+- `anti-ddos.sh` — script principal (ejecutable).
+- `README.md` — este archivo.
+
+---
+
+## Requisitos
+- Linux con `iptables` (y opcionalmente `ip6tables`).
+- Acceso root (ejecutar con `sudo` o como `root`).
+- Recomendado: consola local o acceso de rescate del proveedor por si algo falla.
+
+---
+
+## Instalación rápida
+```bash
+# Copiar y dar permisos
+sudo cp anti-ddos.sh /usr/local/sbin/anti-ddos.sh
+sudo chmod +x /usr/local/sbin/anti-ddos.sh
+
+# Editar el puerto SSH en el script (SSHPORT)
+nano /usr/local/sbin/anti-ddos.sh
+
+# Ejecutar el script (como root)
+sudo /usr/local/sbin/anti-ddos.sh
+
+
+Att: zlucasssgg_
